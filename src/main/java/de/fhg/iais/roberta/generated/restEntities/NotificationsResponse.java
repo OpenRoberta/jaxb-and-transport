@@ -88,7 +88,7 @@ import de.fhg.iais.roberta.generated.restEntities.NotificationsResponse;
  * Datum: 2020-06-15
  */
 public class NotificationsResponse extends BaseResponse {
-    protected JSONArray notifications;
+    protected JSONObject notifications;
     
     /**
      * the response for the /notifications/getNotifications REST request
@@ -112,7 +112,7 @@ public class NotificationsResponse extends BaseResponse {
     /**
      * the response for the /notifications/getNotifications REST request
      */
-    public static NotificationsResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,JSONArray notifications) {
+    public static NotificationsResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,JSONObject notifications) {
         NotificationsResponse entity = new NotificationsResponse();
         entity.setCmd(cmd);
         entity.setRc(rc);
@@ -187,7 +187,7 @@ public class NotificationsResponse extends BaseResponse {
                 } else if ("notifications.available".equals(key)) {
                     setNotificationsAvailable(jsonO.optBoolean(key));
                 } else if ("notifications".equals(key)) {
-                    setNotifications(jsonO.getJSONArray(key));
+                    setNotifications(jsonO.getJSONObject(key));
                 } else {
                     throw new RuntimeException("JSON parse error. Found invalid key: " + key + " in " + jsonO);
                 }
@@ -245,7 +245,7 @@ public class NotificationsResponse extends BaseResponse {
     /**
      * GET notifications. Object must be immutable. Never return null or an undefined/default value.
      */
-    public JSONArray getNotifications() {
+    public JSONObject getNotifications() {
         if (!this.immutable) {
             throw new RuntimeException("no notifications from an object under construction: " + toString());
         }
@@ -255,7 +255,7 @@ public class NotificationsResponse extends BaseResponse {
     /**
      * SET notifications. Object must be mutable.
      */
-    public NotificationsResponse setNotifications(JSONArray notifications) {
+    public NotificationsResponse setNotifications(JSONObject notifications) {
         if (this.immutable) {
             throw new RuntimeException("notifications assigned to an immutable object: " + toString());
         }
