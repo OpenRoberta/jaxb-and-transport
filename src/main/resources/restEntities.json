@@ -530,7 +530,7 @@
         }
       ]
     },
-    {
+    { 
       "name": "SetRobotResponse",
       "extends": "BaseResponse",
       "description": "the response for the /setRobot REST request",
@@ -562,6 +562,10 @@
         {
           "name": "nn",
           "type": "boolean"
+        },
+        {
+          "name": "availableNNActivationFunctions",
+          "type": "JSONArray"
         },
         {
           "name": "webotsSim",
@@ -1083,7 +1087,7 @@
           "required": false
         },
         {
-          "name": "compiledCode",
+          "name": "binaryURL",
           "type": "String"
         },
         {
@@ -1109,7 +1113,7 @@
           "required": false
         },
         {
-          "name": "compiledCode",
+          "name": "binaryURL",
           "type": "String"
         }
       ]

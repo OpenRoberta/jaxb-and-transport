@@ -99,6 +99,7 @@ public class SetRobotResponse extends BaseResponse {
     protected boolean markerSimDefined = false;
     protected boolean nn;
     protected boolean nnDefined = false;
+    protected JSONArray availableNNActivationFunctions;
     protected boolean webotsSim;
     protected boolean webotsSimDefined = false;
     protected String webotsUrl;
@@ -136,7 +137,7 @@ public class SetRobotResponse extends BaseResponse {
     /**
      * the response for the /setRobot REST request
      */
-    public static SetRobotResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String robot,JSONObject program,JSONObject configuration,boolean sim,boolean multipleSim,boolean markerSim,boolean nn,boolean webotsSim,String webotsUrl,String connection,String vendor,boolean configurationUsed,String commandLine,String signature,String sourceCodeFileExtension,String binaryFileExtension,boolean hasWlan,String firmwareDefault) {
+    public static SetRobotResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String robot,JSONObject program,JSONObject configuration,boolean sim,boolean multipleSim,boolean markerSim,boolean nn,JSONArray availableNNActivationFunctions,boolean webotsSim,String webotsUrl,String connection,String vendor,boolean configurationUsed,String commandLine,String signature,String sourceCodeFileExtension,String binaryFileExtension,boolean hasWlan,String firmwareDefault) {
         SetRobotResponse entity = new SetRobotResponse();
         entity.setCmd(cmd);
         entity.setRc(rc);
@@ -162,6 +163,7 @@ public class SetRobotResponse extends BaseResponse {
         entity.setMultipleSim(multipleSim);
         entity.setMarkerSim(markerSim);
         entity.setNn(nn);
+        entity.setAvailableNNActivationFunctions(availableNNActivationFunctions);
         entity.setWebotsSim(webotsSim);
         entity.setWebotsUrl(webotsUrl);
         entity.setConnection(connection);
@@ -241,6 +243,8 @@ public class SetRobotResponse extends BaseResponse {
                     setMarkerSim(jsonO.getBoolean(key));
                 } else if ("nn".equals(key)) {
                     setNn(jsonO.getBoolean(key));
+                } else if ("availableNNActivationFunctions".equals(key)) {
+                    setAvailableNNActivationFunctions(jsonO.getJSONArray(key));
                 } else if ("webotsSim".equals(key)) {
                     setWebotsSim(jsonO.getBoolean(key));
                 } else if ("webotsUrl".equals(key)) {
@@ -327,6 +331,9 @@ public class SetRobotResponse extends BaseResponse {
         }
         if ( !nnDefined) {
             _message = "required property nn of SetRobotResponse-object is not set: " + toString();
+        }
+        if ( availableNNActivationFunctions == null) {
+            _message = "required property availableNNActivationFunctions of SetRobotResponse-object is not set: " + toString();
         }
         if ( !webotsSimDefined) {
             _message = "required property webotsSim of SetRobotResponse-object is not set: " + toString();
@@ -504,6 +511,27 @@ public class SetRobotResponse extends BaseResponse {
         }
         this.nn = nn;
         this.nnDefined = true;
+        return this;
+    }
+    
+    /**
+     * GET availableNNActivationFunctions. Object must be immutable. Never return null or an undefined/default value.
+     */
+    public JSONArray getAvailableNNActivationFunctions() {
+        if (!this.immutable) {
+            throw new RuntimeException("no availableNNActivationFunctions from an object under construction: " + toString());
+        }
+        return this.availableNNActivationFunctions;
+    }
+    
+    /**
+     * SET availableNNActivationFunctions. Object must be mutable.
+     */
+    public SetRobotResponse setAvailableNNActivationFunctions(JSONArray availableNNActivationFunctions) {
+        if (this.immutable) {
+            throw new RuntimeException("availableNNActivationFunctions assigned to an immutable object: " + toString());
+        }
+        this.availableNNActivationFunctions = availableNNActivationFunctions;
         return this;
     }
     
@@ -838,6 +866,7 @@ public class SetRobotResponse extends BaseResponse {
             jsonO.put("multipleSim", this.multipleSim);
             jsonO.put("markerSim", this.markerSim);
             jsonO.put("nn", this.nn);
+            jsonO.put("availableNNActivationFunctions", this.availableNNActivationFunctions);
             jsonO.put("webotsSim", this.webotsSim);
             if (this.webotsUrl != null) {
                 jsonO.put("webotsUrl", this.webotsUrl);
@@ -865,7 +894,7 @@ public class SetRobotResponse extends BaseResponse {
     
     @Override
     public String toString() {
-        return "SetRobotResponse [immutable=" + this.immutable + ", cmd=" + this.cmd + ", rc=" + this.rc + ", message=" + this.message + ", cause=" + this.cause + ", parameters=" + this.parameters + ", initToken=" + this.initToken + ", serverTime=" + this.serverTime + ", serverVersion=" + this.serverVersion + ", robotWait=" + this.robotWait + ", robotBattery=" + this.robotBattery + ", robotName=" + this.robotName + ", robotVersion=" + this.robotVersion + ", robotFirmwareName=" + this.robotFirmwareName + ", robotSensorvalues=" + this.robotSensorvalues + ", robotNepoexitvalue=" + this.robotNepoexitvalue + ", robotState=" + this.robotState + ", notificationsAvailable=" + this.notificationsAvailable + ", robot=" + this.robot + ", program=" + this.program + ", configuration=" + this.configuration + ", sim=" + this.sim + ", multipleSim=" + this.multipleSim + ", markerSim=" + this.markerSim + ", nn=" + this.nn + ", webotsSim=" + this.webotsSim + ", webotsUrl=" + this.webotsUrl + ", connection=" + this.connection + ", vendor=" + this.vendor + ", configurationUsed=" + this.configurationUsed + ", commandLine=" + this.commandLine + ", signature=" + this.signature + ", sourceCodeFileExtension=" + this.sourceCodeFileExtension + ", binaryFileExtension=" + this.binaryFileExtension + ", hasWlan=" + this.hasWlan + ", firmwareDefault=" + this.firmwareDefault + " ]";
+        return "SetRobotResponse [immutable=" + this.immutable + ", cmd=" + this.cmd + ", rc=" + this.rc + ", message=" + this.message + ", cause=" + this.cause + ", parameters=" + this.parameters + ", initToken=" + this.initToken + ", serverTime=" + this.serverTime + ", serverVersion=" + this.serverVersion + ", robotWait=" + this.robotWait + ", robotBattery=" + this.robotBattery + ", robotName=" + this.robotName + ", robotVersion=" + this.robotVersion + ", robotFirmwareName=" + this.robotFirmwareName + ", robotSensorvalues=" + this.robotSensorvalues + ", robotNepoexitvalue=" + this.robotNepoexitvalue + ", robotState=" + this.robotState + ", notificationsAvailable=" + this.notificationsAvailable + ", robot=" + this.robot + ", program=" + this.program + ", configuration=" + this.configuration + ", sim=" + this.sim + ", multipleSim=" + this.multipleSim + ", markerSim=" + this.markerSim + ", nn=" + this.nn + ", availableNNActivationFunctions=" + this.availableNNActivationFunctions + ", webotsSim=" + this.webotsSim + ", webotsUrl=" + this.webotsUrl + ", connection=" + this.connection + ", vendor=" + this.vendor + ", configurationUsed=" + this.configurationUsed + ", commandLine=" + this.commandLine + ", signature=" + this.signature + ", sourceCodeFileExtension=" + this.sourceCodeFileExtension + ", binaryFileExtension=" + this.binaryFileExtension + ", hasWlan=" + this.hasWlan + ", firmwareDefault=" + this.firmwareDefault + " ]";
     }
     @Override
     public int hashCode() {

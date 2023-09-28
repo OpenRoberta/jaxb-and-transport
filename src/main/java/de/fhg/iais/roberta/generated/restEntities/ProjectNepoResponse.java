@@ -91,7 +91,7 @@ public class ProjectNepoResponse extends BaseResponse {
     protected String programName;
     protected String progXML;
     protected Map<String,JSONObject> confAnnos;
-    protected String compiledCode;
+    protected String binaryURL;
     protected JSONObject configuration;
     
     /**
@@ -116,7 +116,7 @@ public class ProjectNepoResponse extends BaseResponse {
     /**
      * the response for the /projectWorkflow/run and ../compileProgram REST request
      */
-    public static ProjectNepoResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String programName,String progXML,Map<String,JSONObject> confAnnos,String compiledCode,JSONObject configuration) {
+    public static ProjectNepoResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String programName,String progXML,Map<String,JSONObject> confAnnos,String binaryURL,JSONObject configuration) {
         ProjectNepoResponse entity = new ProjectNepoResponse();
         entity.setCmd(cmd);
         entity.setRc(rc);
@@ -138,7 +138,7 @@ public class ProjectNepoResponse extends BaseResponse {
         entity.setProgramName(programName);
         entity.setProgXML(progXML);
         entity.setConfAnnos(confAnnos);
-        entity.setCompiledCode(compiledCode);
+        entity.setBinaryURL(binaryURL);
         entity.setConfiguration(configuration);
         entity.immutable();
         return entity;
@@ -207,8 +207,8 @@ public class ProjectNepoResponse extends BaseResponse {
                             putConfAnnos(subKey, map.getJSONObject(subKey));
                         }
                     }
-                } else if ("compiledCode".equals(key)) {
-                    setCompiledCode(jsonO.getString(key));
+                } else if ("binaryURL".equals(key)) {
+                    setBinaryURL(jsonO.getString(key));
                 } else if ("configuration".equals(key)) {
                     setConfiguration(jsonO.optJSONObject(key));
                 } else {
@@ -255,8 +255,8 @@ public class ProjectNepoResponse extends BaseResponse {
         if ( serverVersion == null) {
             _message = "required property serverVersion of ProjectNepoResponse-object is not set: " + toString();
         }
-        if ( compiledCode == null) {
-            _message = "required property compiledCode of ProjectNepoResponse-object is not set: " + toString();
+        if ( binaryURL == null) {
+            _message = "required property binaryURL of ProjectNepoResponse-object is not set: " + toString();
         }
         if ( _message != null ) {
             this.immutable = false;
@@ -377,23 +377,23 @@ public class ProjectNepoResponse extends BaseResponse {
     }
     
     /**
-     * GET compiledCode. Object must be immutable. Never return null or an undefined/default value.
+     * GET binaryURL. Object must be immutable. Never return null or an undefined/default value.
      */
-    public String getCompiledCode() {
+    public String getBinaryURL() {
         if (!this.immutable) {
-            throw new RuntimeException("no compiledCode from an object under construction: " + toString());
+            throw new RuntimeException("no binaryURL from an object under construction: " + toString());
         }
-        return this.compiledCode;
+        return this.binaryURL;
     }
     
     /**
-     * SET compiledCode. Object must be mutable.
+     * SET binaryURL. Object must be mutable.
      */
-    public ProjectNepoResponse setCompiledCode(String compiledCode) {
+    public ProjectNepoResponse setBinaryURL(String binaryURL) {
         if (this.immutable) {
-            throw new RuntimeException("compiledCode assigned to an immutable object: " + toString());
+            throw new RuntimeException("binaryURL assigned to an immutable object: " + toString());
         }
-        this.compiledCode = compiledCode;
+        this.binaryURL = binaryURL;
         return this;
     }
     
@@ -496,7 +496,7 @@ public class ProjectNepoResponse extends BaseResponse {
                     jsonO.put("confAnnos", map);
                 }
             }
-            jsonO.put("compiledCode", this.compiledCode);
+            jsonO.put("binaryURL", this.binaryURL);
             if (this.configuration != null) {
                 jsonO.put("configuration", this.configuration);
             }
@@ -508,7 +508,7 @@ public class ProjectNepoResponse extends BaseResponse {
     
     @Override
     public String toString() {
-        return "ProjectNepoResponse [immutable=" + this.immutable + ", cmd=" + this.cmd + ", rc=" + this.rc + ", message=" + this.message + ", cause=" + this.cause + ", parameters=" + this.parameters + ", initToken=" + this.initToken + ", serverTime=" + this.serverTime + ", serverVersion=" + this.serverVersion + ", robotWait=" + this.robotWait + ", robotBattery=" + this.robotBattery + ", robotName=" + this.robotName + ", robotVersion=" + this.robotVersion + ", robotFirmwareName=" + this.robotFirmwareName + ", robotSensorvalues=" + this.robotSensorvalues + ", robotNepoexitvalue=" + this.robotNepoexitvalue + ", robotState=" + this.robotState + ", notificationsAvailable=" + this.notificationsAvailable + ", programName=" + this.programName + ", progXML=" + this.progXML + ", confAnnos=" + this.confAnnos + ", compiledCode=" + this.compiledCode + ", configuration=" + this.configuration + " ]";
+        return "ProjectNepoResponse [immutable=" + this.immutable + ", cmd=" + this.cmd + ", rc=" + this.rc + ", message=" + this.message + ", cause=" + this.cause + ", parameters=" + this.parameters + ", initToken=" + this.initToken + ", serverTime=" + this.serverTime + ", serverVersion=" + this.serverVersion + ", robotWait=" + this.robotWait + ", robotBattery=" + this.robotBattery + ", robotName=" + this.robotName + ", robotVersion=" + this.robotVersion + ", robotFirmwareName=" + this.robotFirmwareName + ", robotSensorvalues=" + this.robotSensorvalues + ", robotNepoexitvalue=" + this.robotNepoexitvalue + ", robotState=" + this.robotState + ", notificationsAvailable=" + this.notificationsAvailable + ", programName=" + this.programName + ", progXML=" + this.progXML + ", confAnnos=" + this.confAnnos + ", binaryURL=" + this.binaryURL + ", configuration=" + this.configuration + " ]";
     }
     @Override
     public int hashCode() {
