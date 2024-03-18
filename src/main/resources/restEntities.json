@@ -564,6 +564,10 @@
           "type": "boolean"
         },
         {
+          "name": "nnActivations",
+          "type": "JSONArray"
+        },
+        {
           "name": "webotsSim",
           "type": "boolean"
         },
@@ -571,10 +575,6 @@
           "name": "webotsUrl",
           "type": "String",
           "required": false
-        },
-        {
-          "name": "connection",
-          "type": "String"
         },
         {
           "name": "vendor",
@@ -601,10 +601,6 @@
         {
           "name": "binaryFileExtension",
           "type": "String"
-        },
-        {
-          "name": "hasWlan",
-          "type": "boolean"
         },
         {
           "name": "firmwareDefault",
