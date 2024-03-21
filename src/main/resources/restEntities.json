@@ -527,6 +527,10 @@
         {
           "name": "robot",
           "type": "String"
+        },
+        {
+          "name": "extensions",
+          "type": "JSONObject"
         }
       ]
     },
