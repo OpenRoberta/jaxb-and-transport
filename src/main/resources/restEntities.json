@@ -88,65 +88,65 @@
           "description": "the unique token identifying the front-end session"
         },
         {
-          "name": "server.time",
+          "name": "serverTime",
           "type": "long",
           "description": "date and time of the server since the epoch"
         },
         {
-          "name": "server.version",
+          "name": "serverVersion",
           "type": "String",
           "description": "version number of the server"
         },
         {
-          "name": "robot.wait",
+          "name": "robotWait",
           "type": "long",
           "description": "time since the last approval request",
           "required": false
         },
         {
-          "name": "robot.battery",
+          "name": "robotBattery",
           "type": "String",
           "description": "battery level",
           "required": false
         },
         {
-          "name": "robot.name",
+          "name": "robotName",
           "type": "String",
           "description": "robot's name",
           "required": false
         },
         {
-          "name": "robot.version",
+          "name": "robotVersion",
           "type": "String",
           "description": "robot's software version",
           "required": false
         },
         {
-          "name": "robot.firmwareName",
+          "name": "robotFirmwareName",
           "type": "String",
           "description": "robot's firmware name",
           "required": false
         },
         {
-          "name": "robot.sensorvalues",
+          "name": "robotSensorvalues",
           "type": "JSONObject",
           "description": "map with sensor values",
           "required": false
         },
         {
-          "name": "robot.nepoexitvalue",
+          "name": "robotNepoexitvalue",
           "type": "int",
           "description": "exit value if robot program has terminated",
           "required": false
         },
         {
-          "name": "robot.state",
+          "name": "robotState",
           "type": "String",
           "description": "state: busy, disconnected or wait",
           "required": false
         },
         {
-          "name": "notifications.available",
+          "name": "notificationsAvailable",
           "type": "boolean",
           "description": "if new notifications are available",
           "required": false
@@ -671,12 +671,12 @@
         {
           "name": "version",
           "type": "String",
-          "description": "the same as server.version"
+          "description": "the same as serverVersion"
         },
         {
           "name": "date",
           "type": "long",
-          "description": "the same as server.time"
+          "description": "the same as serverTime"
         },
         {
           "name": "dateAsString",
@@ -1026,7 +1026,7 @@
         },
         {
           "name": "confAnnos",
-          "type": "String->JSONObject"
+          "type": "JSONObject"
         }
       ]
     },
@@ -1054,7 +1054,7 @@
         },
         {
           "name": "confAnnos",
-          "type": "String->JSONObject"
+          "type": "JSONObject"
         },
         {
           "name": "configuration",
@@ -1079,7 +1079,7 @@
         },
         {
           "name": "confAnnos",
-          "type": "String->JSONObject",
+          "type": "JSONObject",
           "required": false
         },
         {
@@ -1105,7 +1105,7 @@
         },
         {
           "name": "confAnnos",
-          "type": "String->JSONObject",
+          "type": "JSONObject",
           "required": false
         },
         {

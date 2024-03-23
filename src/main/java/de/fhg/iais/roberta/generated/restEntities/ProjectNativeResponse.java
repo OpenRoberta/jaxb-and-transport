@@ -89,7 +89,7 @@ import de.fhg.iais.roberta.generated.restEntities.NotificationsResponse;
  */
 public class ProjectNativeResponse extends BaseResponse {
     protected String programName;
-    protected Map<String,JSONObject> confAnnos;
+    protected JSONObject confAnnos;
     protected String compiledCode;
     
     /**
@@ -114,7 +114,7 @@ public class ProjectNativeResponse extends BaseResponse {
     /**
      * the response for the /projectWorkflow/runNative, ../compileNative and ../reset REST request
      */
-    public static ProjectNativeResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String programName,Map<String,JSONObject> confAnnos,String compiledCode) {
+    public static ProjectNativeResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String programName,JSONObject confAnnos,String compiledCode) {
         ProjectNativeResponse entity = new ProjectNativeResponse();
         entity.setCmd(cmd);
         entity.setRc(rc);
@@ -168,39 +168,32 @@ public class ProjectNativeResponse extends BaseResponse {
                     setParameters(jsonO.optJSONObject(key));
                 } else if ("initToken".equals(key)) {
                     setInitToken(jsonO.getString(key));
-                } else if ("server.time".equals(key)) {
+                } else if ("serverTime".equals(key)) {
                     setServerTime(jsonO.getLong(key));
-                } else if ("server.version".equals(key)) {
+                } else if ("serverVersion".equals(key)) {
                     setServerVersion(jsonO.getString(key));
-                } else if ("robot.wait".equals(key)) {
+                } else if ("robotWait".equals(key)) {
                     setRobotWait(jsonO.optLong(key));
-                } else if ("robot.battery".equals(key)) {
+                } else if ("robotBattery".equals(key)) {
                     setRobotBattery(jsonO.optString(key));
-                } else if ("robot.name".equals(key)) {
+                } else if ("robotName".equals(key)) {
                     setRobotName(jsonO.optString(key));
-                } else if ("robot.version".equals(key)) {
+                } else if ("robotVersion".equals(key)) {
                     setRobotVersion(jsonO.optString(key));
-                } else if ("robot.firmwareName".equals(key)) {
+                } else if ("robotFirmwareName".equals(key)) {
                     setRobotFirmwareName(jsonO.optString(key));
-                } else if ("robot.sensorvalues".equals(key)) {
+                } else if ("robotSensorvalues".equals(key)) {
                     setRobotSensorvalues(jsonO.optJSONObject(key));
-                } else if ("robot.nepoexitvalue".equals(key)) {
+                } else if ("robotNepoexitvalue".equals(key)) {
                     setRobotNepoexitvalue(jsonO.optInt(key));
-                } else if ("robot.state".equals(key)) {
+                } else if ("robotState".equals(key)) {
                     setRobotState(jsonO.optString(key));
-                } else if ("notifications.available".equals(key)) {
+                } else if ("notificationsAvailable".equals(key)) {
                     setNotificationsAvailable(jsonO.optBoolean(key));
                 } else if ("programName".equals(key)) {
                     setProgramName(jsonO.optString(key));
                 } else if ("confAnnos".equals(key)) {
-                    JSONObject map = jsonO.optJSONObject(key);
-                    if ( map != null ) {
-                        Iterator<String> it = map.keys();
-                        while (it.hasNext()) {
-                            String subKey = it.next();
-                            putConfAnnos(subKey, map.getJSONObject(subKey));
-                        }
-                    }
+                    setConfAnnos(jsonO.optJSONObject(key));
                 } else if ("compiledCode".equals(key)) {
                     setCompiledCode(jsonO.getString(key));
                 } else {
@@ -290,7 +283,7 @@ public class ProjectNativeResponse extends BaseResponse {
     /**
      * GET confAnnos. Object must be immutable. Never return null or an undefined/default value.
      */
-    public Map<String,JSONObject> getConfAnnos() {
+    public JSONObject getConfAnnos() {
         if (!this.immutable) {
             throw new RuntimeException("no confAnnos from an object under construction: " + toString());
         }
@@ -309,32 +302,11 @@ public class ProjectNativeResponse extends BaseResponse {
     /**
      * SET confAnnos. Object must be mutable.
      */
-    public ProjectNativeResponse setConfAnnos(Map<String,JSONObject> confAnnos) {
+    public ProjectNativeResponse setConfAnnos(JSONObject confAnnos) {
         if (this.immutable) {
             throw new RuntimeException("confAnnos assigned to an immutable object: " + toString());
         }
-        if ( this.confAnnos == null ) {
-            this.confAnnos = new HashMap<String,JSONObject>();
-        }
-        {
-            for ( Entry<String,JSONObject> entry : confAnnos.entrySet() ) {
-                this.confAnnos.put(entry.getKey(), entry.getValue());
-            }
-        }
-        return this;
-    }
-    
-    /**
-     * PUT confAnnos. Object must be mutable.
-     */
-    public ProjectNativeResponse putConfAnnos(String key, JSONObject value) {
-        if (this.immutable) {
-            throw new RuntimeException("confAnnos assigned to an immutable object: " + toString());
-        }
-        if ( this.confAnnos == null ) {
-            this.confAnnos = new HashMap<String,JSONObject>();
-        }
-        this.confAnnos.put(key, value);
+        this.confAnnos = confAnnos;
         return this;
     }
     
@@ -384,46 +356,40 @@ public class ProjectNativeResponse extends BaseResponse {
                 jsonO.put("parameters", this.parameters);
             }
             jsonO.put("initToken", this.initToken);
-            jsonO.put("server.time", this.serverTime);
-            jsonO.put("server.version", this.serverVersion);
+            jsonO.put("serverTime", this.serverTime);
+            jsonO.put("serverVersion", this.serverVersion);
             if (this.robotWaitDefined) {
-                jsonO.put("robot.wait", this.robotWait);
+                jsonO.put("robotWait", this.robotWait);
             }
             if (this.robotBattery != null) {
-                jsonO.put("robot.battery", this.robotBattery);
+                jsonO.put("robotBattery", this.robotBattery);
             }
             if (this.robotName != null) {
-                jsonO.put("robot.name", this.robotName);
+                jsonO.put("robotName", this.robotName);
             }
             if (this.robotVersion != null) {
-                jsonO.put("robot.version", this.robotVersion);
+                jsonO.put("robotVersion", this.robotVersion);
             }
             if (this.robotFirmwareName != null) {
-                jsonO.put("robot.firmwareName", this.robotFirmwareName);
+                jsonO.put("robotFirmwareName", this.robotFirmwareName);
             }
             if (this.robotSensorvalues != null) {
-                jsonO.put("robot.sensorvalues", this.robotSensorvalues);
+                jsonO.put("robotSensorvalues", this.robotSensorvalues);
             }
             if (this.robotNepoexitvalueDefined) {
-                jsonO.put("robot.nepoexitvalue", this.robotNepoexitvalue);
+                jsonO.put("robotNepoexitvalue", this.robotNepoexitvalue);
             }
             if (this.robotState != null) {
-                jsonO.put("robot.state", this.robotState);
+                jsonO.put("robotState", this.robotState);
             }
             if (this.notificationsAvailableDefined) {
-                jsonO.put("notifications.available", this.notificationsAvailable);
+                jsonO.put("notificationsAvailable", this.notificationsAvailable);
             }
             if (this.programName != null) {
                 jsonO.put("programName", this.programName);
             }
             if (this.confAnnos != null) {
-                {
-                    JSONObject map = new JSONObject();
-                    for ( Entry<String,JSONObject> entry : confAnnos.entrySet() ) {
-                        map.put(entry.getKey(), entry.getValue());
-                    }
-                    jsonO.put("confAnnos", map);
-                }
+                jsonO.put("confAnnos", this.confAnnos);
             }
             jsonO.put("compiledCode", this.compiledCode);
         } catch (JSONException e) {

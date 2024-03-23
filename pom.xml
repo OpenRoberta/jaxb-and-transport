@@ -71,6 +71,7 @@
                         <file>src/main/resources/restEntities.json</file>
                     </transportConfigFiles>
                     <transportBeanOutputDir>src/main/java</transportBeanOutputDir>
+                    <transportTypescriptOutputDir>src/main/ts</transportTypescriptOutputDir>
                 </configuration>
                 <executions>
                     <execution>
