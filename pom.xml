@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>de.fhg.iais.tools</groupId>
                 <artifactId>TransportGenerator</artifactId>
-                <version>16.0.0</version>
+                <version>16.0.2</version>
                 <configuration>
                     <transportConfigFiles>
                         <file>src/main/resources/restEntities.json</file>
