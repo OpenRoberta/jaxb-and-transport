@@ -5,27 +5,27 @@
  * Otherwise your effort may be lost: the file will be overwritten automatically
  * when the json-file, it is derived from, is changed.
  */
-export interface InitRequest {
-    log : string[];
-    data : any;
+interface InitRequest {
+    log? : string[];
+    data? : any;
 }
-export interface FullRestRequest {
-    initToken : string;
-    log : string[];
-    data : any;
+interface FullRestRequest {
+    initToken? : string;
+    log? : string[];
+    data? : any;
 }
-export interface BaseRequest {
+interface BaseRequest {
     cmd? : string;
 }
-export interface BaseResponse {
+interface BaseResponse {
     cmd? : string;
-    rc : string;
+    rc? : string;
     message? : string;
     cause? : string;
     parameters? : any;
-    initToken : string;
-    serverTime : number;
-    serverVersion : string;
+    initToken? : string;
+    serverTime? : number;
+    serverVersion? : string;
     robotWait? : number;
     robotBattery? : string;
     robotName? : string;
@@ -36,269 +36,270 @@ export interface BaseResponse {
     robotState? : string;
     notificationsAvailable? : boolean;
 }
-export interface InitResponse extends BaseResponse {
-    server : any;
+interface InitResponse {
+    server? : any;
 }
-export interface RobotInfo {
-    wait : number;
-    battery : string;
-    name : string;
-    version : string;
-    firmwareName : string;
-    sensorvalues : any;
-    nepoexitvalue : number;
+interface RobotInfo {
+    wait? : number;
+    battery? : string;
+    name? : string;
+    version? : string;
+    firmwareName? : string;
+    sensorvalues? : any;
+    nepoexitvalue? : number;
 }
-export interface SaveRequest extends BaseRequest {
+interface SaveRequest {
     timestamp? : number;
-    programName : string;
-    progXML : string;
+    programName? : string;
+    progXML? : string;
     configName? : string;
     confXML? : string;
     ownerAccount? : string;
 }
-export interface ShareCreateRequest extends BaseRequest {
-    programName : string;
-}
-export interface SaveResponse extends BaseResponse {
-    lastChanged : number;
-}
-export interface ShareDeleteRequest extends BaseRequest {
-    programName : string;
-    owner : string;
-    author : string;
-}
-export interface ListingRequest extends BaseRequest {
-    programName : string;
-    owner : string;
-    author : string;
-    configName : string;
-}
-export interface ListingResponse extends BaseResponse {
+interface ShareCreateRequest {
     programName? : string;
-    progXML : string;
+}
+interface SaveResponse {
+    lastChanged? : number;
+}
+interface ShareDeleteRequest {
+    programName? : string;
+    owner? : string;
+    author? : string;
+}
+interface ListingRequest {
+    programName? : string;
+    owner? : string;
+    author? : string;
+    configName? : string;
+}
+interface ListingResponse {
+    programName? : string;
+    progXML? : string;
     configName? : string;
     confXML? : string;
-    lastChanged : number;
+    lastChanged? : number;
 }
-export interface ImportRequest extends BaseRequest {
-    programName : string;
-    progXML : string;
+interface ImportRequest {
+    programName? : string;
+    progXML? : string;
 }
-export interface ImportResponse extends BaseResponse {
-    programName : string;
-    progXML : string;
-    confXML : string;
+interface ImportResponse {
+    programName? : string;
+    progXML? : string;
+    confXML? : string;
 }
-export interface ImportErrorResponse extends BaseResponse {
-    robotTypes : string;
+interface ImportErrorResponse {
+    robotTypes? : string;
 }
-export interface ShareRequest extends BaseRequest {
-    programName : string;
-    shareData : any;
+interface ShareRequest {
+    programName? : string;
+    shareData? : any;
 }
-export interface ShareResponse extends BaseResponse {
-    sharedWith : any[];
+interface ShareResponse {
+    sharedWith? : any[];
 }
-export interface LikeRequest extends BaseRequest {
-    programName : string;
-    robotName : string;
-    author : string;
-    like : boolean;
+interface LikeRequest {
+    programName? : string;
+    robotName? : string;
+    author? : string;
+    like? : boolean;
 }
-export interface EntityRequest extends BaseRequest {
-    programName : string;
-    owner : string;
-    author : string;
-    configName : string;
+interface EntityRequest {
+    programName? : string;
+    owner? : string;
+    author? : string;
+    configName? : string;
 }
-export interface EntityResponse extends BaseResponse {
-    program : any[];
+interface EntityResponse {
+    program? : any[];
 }
-export interface ListingNamesResponse extends BaseResponse {
-    programNames : any[];
+interface ListingNamesResponse {
+    programNames? : any[];
 }
-export interface DeleteRequest extends BaseRequest {
-    programName : string;
-    author : string;
+interface DeleteRequest {
+    programName? : string;
+    author? : string;
 }
-export interface SetTokenRequest extends BaseRequest {
-    token : string;
+interface SetTokenRequest {
+    token? : string;
 }
-export interface SetTokenResponse extends BaseResponse {
-    update : number;
+interface SetTokenResponse {
+    update? : number;
 }
-export interface SetRobotRequest extends BaseRequest {
-    robot : string;
-    extensions : any;
+interface SetRobotRequest {
+    robot? : string;
+    extensions? : any;
 }
-export interface SetRobotResponse extends BaseResponse {
-    robot : string;
-    program : any;
-    configuration : any;
-    sim : boolean;
-    multipleSim : boolean;
-    markerSim : boolean;
-    nn : boolean;
-    nnActivations : any[];
-    webotsSim : boolean;
+interface SetRobotResponse {
+    robot? : string;
+    program? : any;
+    configuration? : any;
+    sim? : boolean;
+    multipleSim? : boolean;
+    markerSim? : boolean;
+    nn? : boolean;
+    nnActivations? : any[];
+    webotsSim? : boolean;
     webotsUrl? : string;
-    vendor : string;
-    configurationUsed : boolean;
+    vendor? : string;
+    configurationUsed? : boolean;
     commandLine? : string;
     signature? : string;
-    sourceCodeFileExtension : string;
-    binaryFileExtension : string;
+    sourceCodeFileExtension? : string;
+    binaryFileExtension? : string;
+    editorCodeLanguage? : string;
     firmwareDefault? : string;
 }
-export interface SaveConfRequest extends BaseRequest {
-    name : string;
-    configuration : string;
+interface SaveConfRequest {
+    name? : string;
+    configuration? : string;
 }
-export interface ConfRequest extends BaseRequest {
-    name : string;
+interface ConfRequest {
+    name? : string;
     owner? : string;
 }
-export interface ConfResponse extends BaseResponse {
+interface ConfResponse {
     confXML? : string;
     configurationNames? : any[];
 }
-export interface PingResponse extends BaseResponse {
-    version : string;
-    date : number;
-    dateAsString : string;
+interface PingResponse {
+    version? : string;
+    date? : number;
+    dateAsString? : string;
 }
-export interface LoginRequest extends BaseRequest {
-    accountName : string;
-    password : string;
+interface LoginRequest {
+    accountName? : string;
+    password? : string;
     userGroupOwner? : string;
     userGroupName? : string;
 }
-export interface LoginResponse extends BaseResponse {
-    userId : number;
-    userRole : string;
-    userAccountName : string;
+interface LoginResponse {
+    userId? : number;
+    userRole? : string;
+    userAccountName? : string;
     userName? : string;
-    isAccountActivated : boolean;
-    userGroupOwner : string;
-    userGroupName : string;
+    isAccountActivated? : boolean;
+    userGroupOwner? : string;
+    userGroupName? : string;
 }
-export interface GetUserResponse extends BaseResponse {
-    userId : number;
-    userAccountName : string;
+interface GetUserResponse {
+    userId? : number;
+    userAccountName? : string;
     userName? : string;
-    userEmail : string;
-    isYoungerThen14 : boolean;
+    userEmail? : string;
+    isYoungerThen14? : boolean;
 }
-export interface UserRequest extends BaseRequest {
-    accountName : string;
+interface UserRequest {
+    accountName? : string;
     password? : string;
-    userEmail : string;
-    userName : string;
-    role : string;
-    language : string;
-    isYoungerThen14 : boolean;
+    userEmail? : string;
+    userName? : string;
+    role? : string;
+    language? : string;
+    isYoungerThen14? : boolean;
 }
-export interface ChangePasswordRequest extends BaseRequest {
-    accountName : string;
-    oldPassword : string;
+interface ChangePasswordRequest {
+    accountName? : string;
+    oldPassword? : string;
     newPassword? : string;
 }
-export interface DeleteUserRequest extends BaseRequest {
-    accountName : string;
-    password : string;
+interface DeleteUserRequest {
+    accountName? : string;
+    password? : string;
 }
-export interface ResetPasswordRequest extends BaseRequest {
-    resetPasswordLink : string;
+interface ResetPasswordRequest {
+    resetPasswordLink? : string;
     newPassword? : string;
 }
-export interface IsResetPasswordLinkExpiredResponse extends BaseResponse {
-    resetPasswordLinkExpired : boolean;
+interface IsResetPasswordLinkExpiredResponse {
+    resetPasswordLinkExpired? : boolean;
 }
-export interface PasswordRecoveryRequest extends BaseRequest {
-    lostEmail : string;
-    language : string;
+interface PasswordRecoveryRequest {
+    lostEmail? : string;
+    language? : string;
 }
-export interface ResendActivationRequest extends BaseRequest {
-    accountName : string;
-    language : string;
+interface ResendActivationRequest {
+    accountName? : string;
+    language? : string;
 }
-export interface ActivateUserRequest extends BaseRequest {
-    userActivationLink : string;
+interface ActivateUserRequest {
+    userActivationLink? : string;
 }
-export interface GetStatusTextResponse extends BaseResponse {
-    statustext : any[];
+interface GetStatusTextResponse {
+    statustext? : any[];
 }
-export interface SetStatusTextRequest extends BaseRequest {
-    english : string;
-    german : string;
-    timestamp : number;
+interface SetStatusTextRequest {
+    english? : string;
+    german? : string;
+    timestamp? : number;
 }
-export interface ProjectWorkflowRequest extends BaseRequest {
-    programName : string;
+interface ProjectWorkflowRequest {
+    programName? : string;
     configurationName? : string;
-    progXML : string;
+    progXML? : string;
     confXML? : string;
     SSID? : string;
     password? : string;
     language? : string;
     robot? : string;
 }
-export interface ProjectWorkflowResetRequest extends BaseRequest {
+interface ProjectWorkflowResetRequest {
     robot? : string;
 }
-export interface ProjectSourceResponse extends BaseResponse {
-    sourceCode : string;
-    progXML : string;
-    confAnnos : any;
+interface ProjectSourceResponse {
+    sourceCode? : string;
+    progXML? : string;
+    confAnnos? : any;
 }
-export interface ProjectSourceSimulationResponse extends BaseResponse {
+interface ProjectSourceSimulationResponse {
     programName? : string;
-    javaScriptProgram : string;
-    fileExtension : string;
-    progXML : string;
-    confAnnos : any;
-    configuration : any;
+    javaScriptProgram? : string;
+    fileExtension? : string;
+    progXML? : string;
+    confAnnos? : any;
+    configuration? : any;
 }
-export interface ProjectNepoResponse extends BaseResponse {
+interface ProjectNepoResponse {
     programName? : string;
     progXML? : string;
     confAnnos? : any;
-    compiledCode : string;
+    compiledCode? : string;
     configuration? : any;
 }
-export interface ProjectNativeResponse extends BaseResponse {
+interface ProjectNativeResponse {
     programName? : string;
     confAnnos? : any;
-    compiledCode : string;
+    compiledCode? : string;
 }
-export interface UserGroupProgramListRequest extends BaseRequest {
-    groupName : string;
+interface UserGroupProgramListRequest {
+    groupName? : string;
 }
-export interface UserGroupRequest extends BaseRequest {
-    groupName : string;
+interface UserGroupRequest {
+    groupName? : string;
 }
-export interface UserGroupResponse extends BaseResponse {
-    userGroup : any;
+interface UserGroupResponse {
+    userGroup? : any;
 }
-export interface UserGroupListResponse extends BaseResponse {
-    userGroups : any[];
+interface UserGroupListResponse {
+    userGroups? : any[];
 }
-export interface ChangeUserGroupRequest extends BaseRequest {
-    groupName : string;
-    groupMemberNames : string[];
+interface ChangeUserGroupRequest {
+    groupName? : string;
+    groupMemberNames? : string[];
 }
-export interface UpdateUserGroupMemberAccountRequest extends BaseRequest {
-    groupName : string;
-    currentGroupMemberAccount : string;
-    newGroupMemberAccount : string;
+interface UpdateUserGroupMemberAccountRequest {
+    groupName? : string;
+    currentGroupMemberAccount? : string;
+    newGroupMemberAccount? : string;
 }
-export interface UserGroupsRequest extends BaseRequest {
-    groupNames : string[];
+interface UserGroupsRequest {
+    groupNames? : string[];
 }
-export interface UserGroupMembersRequest extends BaseRequest {
-    groupName : string;
-    groupMemberAccounts : string[];
+interface UserGroupMembersRequest {
+    groupName? : string;
+    groupMemberAccounts? : string[];
 }
-export interface NotificationsResponse extends BaseResponse {
-    notifications : any;
+interface NotificationsResponse {
+    notifications? : any;
 }

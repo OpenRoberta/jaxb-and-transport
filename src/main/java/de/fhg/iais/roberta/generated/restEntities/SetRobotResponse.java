@@ -110,6 +110,7 @@ public class SetRobotResponse extends BaseResponse {
     protected String signature;
     protected String sourceCodeFileExtension;
     protected String binaryFileExtension;
+    protected String editorCodeLanguage;
     protected String firmwareDefault;
     
     /**
@@ -134,7 +135,7 @@ public class SetRobotResponse extends BaseResponse {
     /**
      * the response for the /setRobot REST request
      */
-    public static SetRobotResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String robot,JSONObject program,JSONObject configuration,boolean sim,boolean multipleSim,boolean markerSim,boolean nn,JSONArray nnActivations,boolean webotsSim,String webotsUrl,String vendor,boolean configurationUsed,String commandLine,String signature,String sourceCodeFileExtension,String binaryFileExtension,String firmwareDefault) {
+    public static SetRobotResponse makeFromProperties(String cmd,String rc,String message,String cause,JSONObject parameters,String initToken,long serverTime,String serverVersion,long robotWait,String robotBattery,String robotName,String robotVersion,String robotFirmwareName,JSONObject robotSensorvalues,int robotNepoexitvalue,String robotState,boolean notificationsAvailable,String robot,JSONObject program,JSONObject configuration,boolean sim,boolean multipleSim,boolean markerSim,boolean nn,JSONArray nnActivations,boolean webotsSim,String webotsUrl,String vendor,boolean configurationUsed,String commandLine,String signature,String sourceCodeFileExtension,String binaryFileExtension,String editorCodeLanguage,String firmwareDefault) {
         SetRobotResponse entity = new SetRobotResponse();
         entity.setCmd(cmd);
         entity.setRc(rc);
@@ -169,6 +170,7 @@ public class SetRobotResponse extends BaseResponse {
         entity.setSignature(signature);
         entity.setSourceCodeFileExtension(sourceCodeFileExtension);
         entity.setBinaryFileExtension(binaryFileExtension);
+        entity.setEditorCodeLanguage(editorCodeLanguage);
         entity.setFirmwareDefault(firmwareDefault);
         entity.immutable();
         return entity;
@@ -256,6 +258,8 @@ public class SetRobotResponse extends BaseResponse {
                     setSourceCodeFileExtension(jsonO.getString(key));
                 } else if ("binaryFileExtension".equals(key)) {
                     setBinaryFileExtension(jsonO.getString(key));
+                } else if ("editorCodeLanguage".equals(key)) {
+                    setEditorCodeLanguage(jsonO.getString(key));
                 } else if ("firmwareDefault".equals(key)) {
                     setFirmwareDefault(jsonO.optString(key));
                 } else {
@@ -340,6 +344,9 @@ public class SetRobotResponse extends BaseResponse {
         }
         if ( binaryFileExtension == null) {
             _message = "required property binaryFileExtension of SetRobotResponse-object is not set: " + toString();
+        }
+        if ( editorCodeLanguage == null) {
+            _message = "required property editorCodeLanguage of SetRobotResponse-object is not set: " + toString();
         }
         if ( _message != null ) {
             this.immutable = false;
@@ -718,6 +725,27 @@ public class SetRobotResponse extends BaseResponse {
     }
     
     /**
+     * GET editorCodeLanguage. Object must be immutable. Never return null or an undefined/default value.
+     */
+    public String getEditorCodeLanguage() {
+        if (!this.immutable) {
+            throw new RuntimeException("no editorCodeLanguage from an object under construction: " + toString());
+        }
+        return this.editorCodeLanguage;
+    }
+    
+    /**
+     * SET editorCodeLanguage. Object must be mutable.
+     */
+    public SetRobotResponse setEditorCodeLanguage(String editorCodeLanguage) {
+        if (this.immutable) {
+            throw new RuntimeException("editorCodeLanguage assigned to an immutable object: " + toString());
+        }
+        this.editorCodeLanguage = editorCodeLanguage;
+        return this;
+    }
+    
+    /**
      * GET firmwareDefault. Object must be immutable. Never return null or an undefined/default value.
      */
     public String getFirmwareDefault() {
@@ -823,6 +851,7 @@ public class SetRobotResponse extends BaseResponse {
             }
             jsonO.put("sourceCodeFileExtension", this.sourceCodeFileExtension);
             jsonO.put("binaryFileExtension", this.binaryFileExtension);
+            jsonO.put("editorCodeLanguage", this.editorCodeLanguage);
             if (this.firmwareDefault != null) {
                 jsonO.put("firmwareDefault", this.firmwareDefault);
             }
@@ -834,7 +863,7 @@ public class SetRobotResponse extends BaseResponse {
     
     @Override
     public String toString() {
-        return "SetRobotResponse [immutable=" + this.immutable + ", cmd=" + this.cmd + ", rc=" + this.rc + ", message=" + this.message + ", cause=" + this.cause + ", parameters=" + this.parameters + ", initToken=" + this.initToken + ", serverTime=" + this.serverTime + ", serverVersion=" + this.serverVersion + ", robotWait=" + this.robotWait + ", robotBattery=" + this.robotBattery + ", robotName=" + this.robotName + ", robotVersion=" + this.robotVersion + ", robotFirmwareName=" + this.robotFirmwareName + ", robotSensorvalues=" + this.robotSensorvalues + ", robotNepoexitvalue=" + this.robotNepoexitvalue + ", robotState=" + this.robotState + ", notificationsAvailable=" + this.notificationsAvailable + ", robot=" + this.robot + ", program=" + this.program + ", configuration=" + this.configuration + ", sim=" + this.sim + ", multipleSim=" + this.multipleSim + ", markerSim=" + this.markerSim + ", nn=" + this.nn + ", nnActivations=" + this.nnActivations + ", webotsSim=" + this.webotsSim + ", webotsUrl=" + this.webotsUrl + ", vendor=" + this.vendor + ", configurationUsed=" + this.configurationUsed + ", commandLine=" + this.commandLine + ", signature=" + this.signature + ", sourceCodeFileExtension=" + this.sourceCodeFileExtension + ", binaryFileExtension=" + this.binaryFileExtension + ", firmwareDefault=" + this.firmwareDefault + " ]";
+        return "SetRobotResponse [immutable=" + this.immutable + ", cmd=" + this.cmd + ", rc=" + this.rc + ", message=" + this.message + ", cause=" + this.cause + ", parameters=" + this.parameters + ", initToken=" + this.initToken + ", serverTime=" + this.serverTime + ", serverVersion=" + this.serverVersion + ", robotWait=" + this.robotWait + ", robotBattery=" + this.robotBattery + ", robotName=" + this.robotName + ", robotVersion=" + this.robotVersion + ", robotFirmwareName=" + this.robotFirmwareName + ", robotSensorvalues=" + this.robotSensorvalues + ", robotNepoexitvalue=" + this.robotNepoexitvalue + ", robotState=" + this.robotState + ", notificationsAvailable=" + this.notificationsAvailable + ", robot=" + this.robot + ", program=" + this.program + ", configuration=" + this.configuration + ", sim=" + this.sim + ", multipleSim=" + this.multipleSim + ", markerSim=" + this.markerSim + ", nn=" + this.nn + ", nnActivations=" + this.nnActivations + ", webotsSim=" + this.webotsSim + ", webotsUrl=" + this.webotsUrl + ", vendor=" + this.vendor + ", configurationUsed=" + this.configurationUsed + ", commandLine=" + this.commandLine + ", signature=" + this.signature + ", sourceCodeFileExtension=" + this.sourceCodeFileExtension + ", binaryFileExtension=" + this.binaryFileExtension + ", editorCodeLanguage=" + this.editorCodeLanguage + ", firmwareDefault=" + this.firmwareDefault + " ]";
     }
     @Override
     public int hashCode() {

@@ -607,6 +607,10 @@
           "type": "String"
         },
         {
+          "name": "editorCodeLanguage",
+          "type": "String"
+        },
+        {
           "name": "firmwareDefault",
           "type": "String",
           "required": false
